@@ -14,7 +14,7 @@ public:
                 start ++;
             }
             else {
-                end ++;
+                end --;
             }
         }
         return maxarea;
