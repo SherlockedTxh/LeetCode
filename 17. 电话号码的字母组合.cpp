@@ -3,34 +3,34 @@
 #include <algorithm>
 using namespace std;
 
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
 class Solution {
 public:
-    vector<string> letterCombinations(string digits) {
-        vector<string> dict = {
-            "",
-            "", "abc", "def",
-            "ghi","jkl","mno",
-            "pqrs","tuv","wxyz"
-        };
-
-        vector<string> str;
-        if(digits.size() == 0) return str;
-        string s;
-
-        DFS(digits, 0, s, str, dict);
-        return str;
-    }
-
-    void DFS(string digits, int pos, string& s, vector<string>& str, vector<string> dict){
-        if(pos == digits.size()){
-            str.push_back(s);
-            return ; 
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode* dummyHead = new ListNode(0);
+        dummyHead->next = head; //设置哑节点方便删除head的情况
+        ListNode* p = dummyHead;
+        ListNode* q = dummyHead;
+        
+        for(int i = 0; i < n; i ++){
+            p = p->next;
         }
-        string tmp = dict[digits[pos] - '0'];
-        for(int i = 0; i < tmp.size(); i++){
-            s.push_back(tmp[i]);
-            DFS(digits, pos + 1, s, str, dict);
-            s.pop_back();
+        while(p->next){
+            p = p->next;
+            q = q->next;
         }
+        p = q->next;
+        q->next = p->next;
+        ListNode* ans = dummyHead->next;
+        delete dummyHead;
+        
+        return ans;
     }
 };
