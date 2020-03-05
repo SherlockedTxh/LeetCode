@@ -3,6 +3,11 @@
 #include <algorithm>
 using namespace std;
 
+// 转换为long long避免加法过程中溢出
+// long long y = static_cast<long long>(nums[i]);
+// long long x = static_cast<long long>(nums[left]);
+// long long z = static_cast<long long>(nums[right]);
+
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
