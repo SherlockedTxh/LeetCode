@@ -17,7 +17,7 @@ using namespace std;
 class Solution {
 public:
     struct cmp{
-        bool operator() (ListNode* a, ListNode* b){ // *知识点：访函数
+        bool operator() (ListNode* a, ListNode* b){ // *知识点：仿函数
             return a->val > b->val; //优先队列默认是大顶堆重载<，本题需要小顶堆与之相反
         }
     };
