@@ -23,7 +23,7 @@ public:
         if(left < n){
             str.push_back('(');
             f(pos - 1, n, left + 1, right, str, ans);
-            str.pop_back();
+            str.pop_back(); //注意这里要删掉str新加的元素
         }
         if(left > right){
             str.push_back(')');
