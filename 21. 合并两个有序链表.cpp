@@ -10,6 +10,7 @@ struct ListNode {
     ListNode(int x) : val(x), next(NULL) {}
 };
 
+//没动脑子的辣鸡方法，可以不创造新节点合并两个链表
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
