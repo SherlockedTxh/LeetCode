@@ -13,9 +13,9 @@ using namespace std;
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
-        int len = nums.size(), mid = 0;
+        int len = nums.size(), mid;
         int left = 0, right = len - 1;
-        while(left < right){
+        while(left <= right){
             mid = (left + right) / 2;
             if(nums[mid] == target){
                 return mid;
