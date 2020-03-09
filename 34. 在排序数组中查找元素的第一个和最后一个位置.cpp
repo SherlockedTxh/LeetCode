@@ -5,6 +5,7 @@
 #include <queue>
 using namespace std;
 
+//写完发现这种方法有问题，对于所有元素一样的情况无法保证log(n)的复杂度。
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
