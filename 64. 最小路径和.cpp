@@ -29,3 +29,25 @@ public:
         return dp[row - 1][column - 1];
     }
 };
+
+//改进后，在原数组上操作，空间复杂度O(1)
+class Solution {
+public:
+    int minPathSum(vector<vector<int>>& grid) {
+        int row = grid.size(), column = grid[0].size();
+        for(int i = 0; i < row; i ++){
+            for(int j = 0; j < column; j ++){
+                if(i == 0 && j != 0){
+                    grid[i][j] += grid[i][j - 1];
+                }
+                else if(i != 0 && j == 0){
+                    grid[i][j] += grid[i - 1][j];
+                }
+                else if(i != 0 && j != 0){
+                    grid[i][j] += min(grid[i][j - 1], grid[i - 1][j]);
+                }
+            }
+        }
+        return grid[row - 1][column - 1];
+    }
+};
