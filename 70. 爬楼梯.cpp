@@ -7,6 +7,7 @@
 #include <limits>
 using namespace std;
 
+//一开始看错题目。。没看到一次只能走一步或者两步。下面是不限制步数的方法：
 //隔板法
 //组合数公式C(n, k) = C(n-1, k-1) + C(n-1, k)
 class Solution {
