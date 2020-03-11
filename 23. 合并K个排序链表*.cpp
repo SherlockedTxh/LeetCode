@@ -25,7 +25,7 @@ public:
         priority_queue<ListNode* , vector<ListNode* >, cmp> heapk;
         for(auto p : lists){
             if(p){
-                heapk.push(p);
+                heapk.push(p); //把每个链表的表头加入队列
             }
         }
         ListNode* dummyHead = new ListNode(0);
