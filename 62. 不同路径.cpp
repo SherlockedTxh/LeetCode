@@ -7,6 +7,9 @@
 using namespace std;
 
 //dp思路:到达右下角的路径数 = 到达右下角上面一格的路径数 + 到达右下角左边一格的路径数
+//空间复杂度O(n^2),可优化至O(n),dp[i][j] = dp[i - 1][j] + dp[i][j - 1]变为：
+//cur[j] = cur[j-1] + pre[j]; 这样是O(2n)，因为只关注前一行，pre[j]=dp[i - 1][j]，可以再优化：
+//cur[j] += cur[j-1]; O(n)
 class Solution {
 public:
     int uniquePaths(int m, int n) {
