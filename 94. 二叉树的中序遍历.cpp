@@ -23,7 +23,7 @@ public:
         while(!ldr.empty() || curr){
             while(curr){
                 ldr.push(curr);
-                curr = curr->left;
+                curr = curr->left; // 找到最左边的节点，压栈
             }
             ans.push_back(ldr.top()->val);
             curr = ldr.top();
