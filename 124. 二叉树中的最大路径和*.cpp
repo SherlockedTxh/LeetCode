@@ -30,9 +30,9 @@ public:
         if(root == nullptr) return 0; // 学习了NULL和nullptr的区别，c++中NULL为整数0，这里用NULL也可以
         int left = max(0, helper(root->left));
         int right = max(0, helper(root->right));
-        int lr = root->val + left + right; //root为根节点，或者第一种情况
+        int lr = root->val + left + right; //root为根节点，或者第一种情况，不再往a以上走，直接计算b + a + c
         ans = max(ans, lr);
-        return root->val + max(left, right); // 第2 3种情况
+        return root->val + max(left, right); // 第2 3种情况，b，c中选大的那条路
     }
     int maxPathSum(TreeNode* root) {
         helper(root);
