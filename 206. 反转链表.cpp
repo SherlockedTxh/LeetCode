@@ -16,7 +16,7 @@ using namespace std;
  * };
  */
 
-// 逐个删除原链表节点，一次作为新链表的头节点插入
+// 逐个删除原链表节点，没删除一个，将其作为新链表的头节点插入
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
