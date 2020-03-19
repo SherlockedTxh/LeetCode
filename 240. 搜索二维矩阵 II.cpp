@@ -7,7 +7,7 @@
 #include <limits>
 using namespace std;
 
-// dfs 过不了
+// dfs 过不了 还不如两个for循环。。
 class Solution {
 public:
     bool dfs(vector<vector<int>>& matrix, int target, int x, int y){
