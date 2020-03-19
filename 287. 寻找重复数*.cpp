@@ -45,6 +45,7 @@ public:
 };
 
 // 快慢指针 leetcode官方给出的方法中唯一满足条件的，但是我没懂原理。。
+// 跟142. 环形链表 II思路是一样的，但是我不知道为什么这个可以转化成环形链表那个形状
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
