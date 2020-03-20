@@ -25,7 +25,7 @@ private:
     vector<int> preorder;
     vector<int> inorder;
 public:
-    TreeNode* helper(int left, int right){ // 注意判断条件是left == right，所以是坐包括又不包括
+    TreeNode* helper(int left, int right){ // 注意判断条件是left == right，所以是左包括右不包括
         if(left == right) return NULL;
         int root_val = preorder[root_index];
         TreeNode* root = new TreeNode(root_val);
