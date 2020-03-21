@@ -8,6 +8,7 @@
 using namespace std;
 
 // long + 递归
+// Note：C++标准规定long的大小不小于int也就是说sizeof(long)>=sizeof(int).这里感觉用long long更好
 class Solution {
 public:
     int divide(int dividend, int divisor) {
