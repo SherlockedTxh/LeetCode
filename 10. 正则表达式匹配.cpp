@@ -3,6 +3,7 @@
 using namespace std;
 
 // DP过程：
+// dp[i][j]表示s的前i个是否能被p的前j个匹配
 // if p.charAt(j) == s.charAt(i) : dp[i][j] = dp[i-1][j-1]；
 // if p.charAt(j) == '.' : dp[i][j] = dp[i-1][j-1]；
 // if p.charAt(j) == '*'：
