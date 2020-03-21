@@ -33,3 +33,30 @@ public:
         return;
     }
 };
+
+// 前面push和pop的方式我总是有点想不清楚，还是下面这种方式好理解
+class Solution {
+public:
+    vector<string> generateParenthesis(int n) {
+        int left(0), right(0); //左右括号数
+        string str;
+        vector<string> ans;
+        f(n * 2, n, 0, 0, str, ans);
+        return ans;
+    }
+    void f(int pos, int n, int left, int right, string str, vector<string>& ans){
+        if(pos == 0){
+            if(left == right){
+                ans.push_back(str);
+            }
+            return;
+        }
+        if(left < n){
+            f(pos - 1, n, left + 1, right, str + '(', ans);
+        }
+        if(left > right){
+            f(pos - 1, n, left, right + 1, str + ')', ans);
+        }
+        return;
+    }
+};
