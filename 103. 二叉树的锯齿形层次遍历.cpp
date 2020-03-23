@@ -15,6 +15,7 @@ struct TreeNode {
 };
 
 // BFS 层次遍历 对于奇数行用每次往vector的头insert元素
+// 由于对vector头部进行操作，效率会变差，用deque时间会更好,但是内存占用会变高
 class Solution {
 public:
     vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
@@ -42,6 +43,42 @@ public:
             level++;
             ans.push_back(layer);
             layer.clear();
+        }
+        return ans;
+    }
+};
+
+// deque
+class Solution {
+public:
+    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+        if(root == nullptr) return {};
+        deque<TreeNode*> mydeque;
+        vector<vector<int>> ans;
+        mydeque.push_back(root);
+
+        int level = 0;
+        while(!mydeque.empty()){
+            int size = mydeque.size();
+            vector<int> layer;
+            while(size--){
+                TreeNode* tmp;
+                if(level % 2 == 0){
+                    tmp = mydeque.front();
+                    mydeque.pop_front();
+                    if(tmp->left) mydeque.push_back(tmp->left);
+                    if(tmp->right) mydeque.push_back(tmp->right);
+                }
+                else{
+                    tmp = mydeque.back();
+                    mydeque.pop_back();
+                    if(tmp->right) mydeque.push_front(tmp->right);
+                    if(tmp->left) mydeque.push_front(tmp->left);
+                }
+                layer.push_back(tmp->val);
+            }
+            level++;
+            ans.push_back(layer);
         }
         return ans;
     }
