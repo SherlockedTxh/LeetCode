@@ -12,6 +12,7 @@ using namespace std;
 // 否则就进行回溯（递归返回上一层） sub ∈ s[start, end + 1] 是否是回文字符串, 如果是 ... ， 直到结束， 
 // 如果发现 start == s.size() 说明 s 最后一个字符上一层检查定是回文串。 符合解
 
+class Solution {
 private:
     int size;
     vector<vector<string>> ans;
