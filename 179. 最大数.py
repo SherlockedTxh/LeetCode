@@ -3,7 +3,7 @@ import heapq
 from queue import Queue,PriorityQueue
 
 
-# 写法一：
+# python3 写法一：
 # Note：map(str, nums)
 class LargerNumKey(str): # 继承str __lt__就是 < ,less than, > 是__gt__
     def __lt__(x, y):
@@ -14,7 +14,20 @@ class Solution:
         largest_num = ''.join(sorted(map(str, nums), key=LargerNumKey))
         return '0' if largest_num[0] == '0' else largest_num
 
-# 写法二：python2的写法，python2中map()返回列表，python3返回迭代器
+# python3 写法二：
+class Solution:
+    def largestNumber(self, nums: List[int]) -> str:
+        from functools import cmp_to_key
+        if not nums:
+            return ''
+        nums = map(str, nums)
+        key = cmp_to_key(lambda x, y: int(y + x) - int(x + y))
+        # lstrip() 方法: 截掉字符串左边的空格或指定字符  0012->12
+        res = ''.join(sorted(nums, key=key)).lstrip('0')
+        # 000->''
+        return res or '0'
+
+# python2写法：python2中map()返回列表，python3返回迭代器
 class Solution(object):
     def largestNumber(self, nums):
         """
