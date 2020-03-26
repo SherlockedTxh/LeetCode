@@ -48,7 +48,9 @@ public:
     }
 };
 
-// 方法三 跟方法一相似，维护当前已处理的最右边的非0元素的下标，比方法一写起来简单
+// 方法三 双指针
+// 跟方法一相似，维护当前已处理的最右边的非0元素的下标，比方法一写起来简单
+// 保证lastNonZeroFoundAt指向位置的左边都是非0元素
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
