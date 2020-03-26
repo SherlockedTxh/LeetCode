@@ -50,3 +50,40 @@ public:
         return dp[n];
     }
 };
+
+// 算法：
+// 首先，我们准备一个小于给定数字 n 的完全平方数列表（称为 square_nums）。
+// 在主循环中，将组合的大小（称为 count）从 1 迭代到 n，我们检查数字 n 是否可以除以组合的和，即 is_divided_by(n, count)。
+// 函数 is_divided_by(n, count) 可以用递归的形式实现，汝上面所说。
+// 在最下面的例子中，我们有 count==1，我们只需检查数字 n 是否本身是一个完全平方数。可以在 square_nums 中检查，即 n ∈ square_nums
+// n∈square_nums。如果 square_nums 使用的是集合数据结构，我们可以获得比 n == int(sqrt(n)) ^ 2 更快的运行时间。
+class Solution {
+private:
+    unordered_set<int> square_nums; // 包含可以当前所有比n小的平方数
+public:
+    int numSquares(int n) {
+        for(int i = 1; i * i <= n; i++){
+            square_nums.insert(i * i);
+        }
+        int count = 1;
+        for(; count <= n; count++){
+            if(is_devided_by(n, count)){
+                return count;
+            }
+        }
+        return n;
+    }
+
+    bool is_devided_by(int n, int count){
+        if(count == 1){
+            return square_nums.count(n);
+        }
+
+        for(int num : square_nums){
+            if(is_devided_by(n - num, count - 1)){
+                return true;
+            }
+        }
+        return false;
+    }
+};
