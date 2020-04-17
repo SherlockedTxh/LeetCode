@@ -21,7 +21,7 @@ using namespace std;
 //   但插入和删除效率较高。只需要在插入的地方更改指针的指向即可，不用移动数据。
 class LRUCache {
 private:
-    queue<int> lru;
+    // queue<int> lru;
     int capacity; //缓存容量
     list<pair<int, int>> cache; // 双向链表：装着 (key, value) 元组
     unordered_map<int, list<pair<int, int>>::iterator> hashmap; // 哈希表：key 映射到 (key, value) 在 cache 中的位置
