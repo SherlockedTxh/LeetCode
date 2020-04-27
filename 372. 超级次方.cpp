@@ -12,7 +12,8 @@ public:
         int part2 = mypow(superPow(a, b), 10, 1337);
         return (part1 * part2) % 1337;
     }
-
+    
+    // 快速幂取模
     int mypow(int a, int b, int base){
         int ans = 1;
         a %= base;
