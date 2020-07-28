@@ -28,3 +28,21 @@ public:
         return ans;
     }
 };
+
+// 纵向扫描
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        if(strs.size() == 0) return "";
+        int len = strs[0].size(), count = strs.size();
+        for(int i = 0; i < len; i++){
+            char c = strs[0][i];
+            for(int j = 1; j < count; j++){
+                if(i == strs[j].size() or strs[j][i] != c){
+                    return strs[0].substr(0, i + 1);
+                }
+            }
+        }
+        return strs[0];
+    }
+};
