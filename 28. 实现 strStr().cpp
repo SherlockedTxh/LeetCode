@@ -66,3 +66,41 @@ public:
         return -1;
     }
 };
+
+// KMP模块化
+class Solution {
+public:
+    vector<int> getNext(string t){
+        vector<int> next(t.size());
+        next[0] = -1;
+        int i = 0, j = -1;
+        while(i < t.size() - 1){
+            if(j == -1 || t[i] == t[j]){
+                i++;
+                j++;
+                next[i] = j;
+            }
+            else j = next[j];
+        }
+        return next;
+    }
+
+    int kmp(string s, string t){
+        int i = 0, j = 0;
+        vector<int> next = getNext(t);
+        while(i < int(s.size()) and j < int(t.size())){
+            if(j == -1 or s[i] == t[j]){
+                i++;
+                j++;
+            }
+            else j = next[j];
+        }
+        if(j >= t.size()) return i - t.size();
+        else return -1;
+    }
+
+    int strStr(string haystack, string needle) {
+        if(needle.size() == 0) return 0;
+        return kmp(haystack, needle);
+    }
+};
