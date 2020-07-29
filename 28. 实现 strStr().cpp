@@ -88,7 +88,7 @@ public:
     int kmp(string s, string t){
         int i = 0, j = 0;
         vector<int> next = getNext(t);
-        while(i < int(s.size()) and j < int(t.size())){
+        while(i < int(s.size()) and j < int(t.size())){ //这里不加int会有错，string.size()返回的是size_t类型，差错查的我吐了
             if(j == -1 or s[i] == t[j]){
                 i++;
                 j++;
