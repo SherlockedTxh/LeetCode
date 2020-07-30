@@ -117,3 +117,36 @@ public:
         return nums[left - 1] == target ? left - 1 : -1;
     }
 };
+
+// 稍微简化
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        vector<int> ans;
+        ans.push_back(left_bound(nums, target));
+        ans.push_back(right_bound(nums, target));
+        return ans;
+    }
+    int left_bound(vector<int>& nums, int target){
+        if(nums.size() == 0) return -1;
+        int left = 0, right = nums.size() - 1, mid;
+        while(left <= right){
+            mid = left + (right - left) / 2;
+            if(nums[mid] < target) left = mid + 1;
+            else right = mid - 1;
+        }
+        if(left == nums.size()) return -1;
+        return nums[left] == target ? left : -1;
+    }
+    int right_bound(vector<int>& nums, int target){
+        if(nums.size() == 0) return -1;
+        int left = 0, right = nums.size() - 1, mid;
+        while(left <= right){
+            mid = left + (right - left) / 2;
+            if(nums[mid] > target) right = mid - 1;left = mid + 1;
+            else left = mid + 1;
+        }
+        if(right == 0) return -1;
+        return nums[right] == target ? right : -1;
+    }
+};
