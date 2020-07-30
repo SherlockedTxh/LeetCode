@@ -14,6 +14,7 @@ using namespace std;
 // if p.charAt(j) == '?' : dp[i][j] = dp[i-1][j-1]；
 // if p.charAt(j) == '*'： 因为*可以匹配任意长度字符串，所以dp[k][j-1]中与任意一个为true，那么从k到i的字符串可以用*匹配掉
 //     dp[i][j] = dp[1][j-1] | ...| dp[i][j-1] (其中dp[k][j-1] 1<=k<=i)
+//     dp[i][j] = dp[i][j - 1] || dp[i - 1][j]
 class Solution {
 public:
     bool isMatch(string s, string p) {
