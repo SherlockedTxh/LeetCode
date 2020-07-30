@@ -71,7 +71,7 @@ public:
 };
 
 // 方法二 置换
-// 通过置换把每个数字归为到对应的位置，如[3,4,1,-1]->[1,-1,3,4]不是正数的位置就是答案
+// 通过置换把每个数字归为到对应的位置，如[3,4,1,-1]->[1,-1,3,4]，nums[i] != i + 1的位置就是答案
 class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
