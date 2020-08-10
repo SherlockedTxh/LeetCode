@@ -13,18 +13,14 @@ public:
     void sortColors(vector<int>& nums) {
         int len = nums.size();
         int p0 = -1, p2 = len, curr = 0;
-        while(curr < p2 && curr < len){
+        while(curr < p2){
             if(nums[curr] == 0){
-                swap(nums[curr], nums[p0 + 1]);
-                p0 ++;
+                swap(nums[curr++], nums[++p0]);
             }
-            if(nums[curr] == 2){
-                swap(nums[curr], nums[p2 - 1]);
-                p2 --;
+            else if(nums[curr] == 2){
+                swap(nums[curr], nums[--p2]);
             }
-            else{
-                curr ++;
-            }
+            else curr ++;
         }
     }
 };
