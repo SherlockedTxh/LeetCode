@@ -20,5 +20,6 @@ public:
             if(!tmp.empty()) ans.push_back(tmp);
         }
         reverse(ans.begin(), ans.end());
+        return ans;
     }
 };
