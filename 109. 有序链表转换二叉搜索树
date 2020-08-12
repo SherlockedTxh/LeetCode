@@ -1,0 +1,31 @@
+// 方法一：链表存成数组
+
+// 方法二： 中序遍历模拟
+// 1.计算链表的长度len 。 
+// 2.根据链表长度len用递归法创建总节点数为len的完全二叉树空间。 
+// 3.用中序遍历填入对应的数据。 第二步和第三步是同时进行的
+class Solution {
+private:
+    ListNode* p;
+public:
+    TreeNode* sortedListToBST(ListNode* head) {
+        p = head;
+        int size = 0;
+        while(p){
+            size ++;
+            p = p->next;
+        }
+        p = head;
+        return helper(0, size - 1);
+    }
+    TreeNode* helper(int left, int right){
+        if(left > right) return nullptr;
+        int mid = left + (right - left) / 2;
+        TreeNode* tmp = helper(left, mid - 1);
+        TreeNode* root = new TreeNode(p->val);
+        root->left = tmp;
+        p = p->next;
+        root->right = helper(mid + 1, right);
+        return root;
+    }
+};
