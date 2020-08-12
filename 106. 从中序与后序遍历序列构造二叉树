@@ -1,0 +1,27 @@
+// 与105相似
+class Solution {
+private:
+    unordered_map<int, int> index;
+    int root_index;
+    vector<int> postorder;
+    vector<int> inorder;
+public:
+    TreeNode* helper(int left, int right){
+        if(left > right) return nullptr;
+        int root_val = postorder[root_index];
+        TreeNode* root = new TreeNode(root_val);
+        root_index --;
+        root->left = helper(left, index[root_val]);
+        root->right = helper(index[root_val] + 1, right);
+        return root;
+    }
+    TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+        this->postorder = postorder;
+        this->inorder = inorder;
+        this->root_index = postorder.size() - 1;
+        for(int i = 0; i < inorder.size(); i++){
+            index[inorder[i]] = i;
+        }
+        return helper(0, inorder.size() - 1);
+    }
+};
