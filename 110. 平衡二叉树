@@ -1,0 +1,11 @@
+class Solution {
+public:
+    bool isBalanced(TreeNode* root) {
+        if(!root) return true;
+        return abs(getdepth(root->left) - getdepth(root->right)) <= 1 and isBalanced(root->left) and isBalanced(root->right);
+    }
+    int getdepth(TreeNode* root){
+        if(!root) return 0;
+        return max(getdepth(root->left), getdepth(root->right)) + 1;
+    }
+};
