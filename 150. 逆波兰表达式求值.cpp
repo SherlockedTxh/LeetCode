@@ -16,33 +16,15 @@ public:
         stack<int> mystack;
         for(string str : tokens){
             int a, b;
-            if(str == "+"){
+            if(str == "+" or str == "-" or str == "*" or str == "/"){
                 a = mystack.top();
                 mystack.pop();
                 b = mystack.top();
                 mystack.pop();
-                mystack.push(a + b);
-            }
-            else if(str == "-"){
-                a = mystack.top();
-                mystack.pop();
-                b = mystack.top();
-                mystack.pop();
-                mystack.push(b - a);
-            }
-            else if(str == "*"){
-                a = mystack.top();
-                mystack.pop();
-                b = mystack.top();
-                mystack.pop();
-                mystack.push(a * b);
-            }
-            else if(str == "/"){
-                a = mystack.top();
-                mystack.pop();
-                b = mystack.top();
-                mystack.pop();
-                mystack.push(b / a);
+                if(str == "+") mystack.push(a + b);
+                if(str == "-") mystack.push(b - a);
+                if(str == "*") mystack.push(a * b);
+                if(str == "/") mystack.push(b / a);
             }
             else{
                 mystack.push(stoi(str));
