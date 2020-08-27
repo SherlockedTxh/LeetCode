@@ -1,0 +1,35 @@
+class Solution {
+public:
+    string fractionToDecimal(int numerator, int denominator) {
+        if(numerator == 0) return "0";
+        if(denominator == 0) return "";
+        string ans;
+
+        long long num = (long long)numerator;
+        long long denom  = (long long)denominator;
+
+        if(num >0 ^ denom > 0)ans += '-';
+
+        num = abs(num);
+        denom = abs(denom);
+
+        ans += to_string(num / denom);
+
+        num %= denom;
+        if(num == 0) return ans;
+        ans += '.';
+        int index = ans.size() - 1;
+        unordered_map<int, int> record;
+        while(num and record.count(num) == 0){
+            record[num] = ++index;
+            num *= 10;
+            ans += to_string(num / denom);
+            num %= denom;
+        }
+        if(record.count(num) == 1){
+            ans.insert(record[num], "(");
+            ans += ')';
+        }
+        return ans;
+    }
+};
