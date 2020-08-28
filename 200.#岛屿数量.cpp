@@ -46,3 +46,34 @@ public:
         return;
     }
 };
+
+// 修改原grid
+class Solution {
+public:
+    int numIslands(vector<vector<char>>& grid) {
+        int row = grid.size();
+        if(!row) return 0;
+        int column = grid[0].size();
+        
+        int ans = 0;
+        for(int i = 0; i < row; i++){
+            for(int j = 0; j < column; j++){
+                if(grid[i][j] == '1'){
+                    ans++;
+                    dfs(grid, i, j);
+                }
+            }
+        }
+        return ans;
+    }
+
+    void dfs(vector<vector<char>>& grid, int r, int c){
+        int row = grid.size();
+        int column = grid[0].size();
+        grid[r][c] = '0';
+        if(r - 1 >= 0 and grid[r - 1][c] == '1') dfs(grid, r - 1, c);
+        if(r + 1 < row and grid[r + 1][c] == '1') dfs(grid, r + 1, c);
+        if(c - 1 >= 0 and grid[r][c - 1] == '1') dfs(grid, r, c - 1);
+        if(c + 1 < column and grid[r][c + 1] == '1') dfs(grid, r, c + 1);
+    }
+};
