@@ -13,3 +13,19 @@ class Solution:
             if(isPrime[i]):
                 isPrime[i * 2 : n : i] = [0] * len(isPrime[i * 2 : n : i])
         return sum(isPrime) - 1
+
+class Solution {
+public:
+    int countPrimes(int n) {
+        vector<int> prime(n, 1);
+        int cnt = 0;
+        for(long long i = 2; i < n; i ++){
+            if(!prime[i]) continue;
+            cnt++;
+            for(long long j = i * i; j < n; j += i){
+                prime[j] = 0;
+            }
+        }
+        return cnt;
+    }
+};
