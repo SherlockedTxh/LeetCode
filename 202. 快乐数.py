@@ -18,3 +18,26 @@ class Solution:
                 n //= 10
             n = tmp
         return 1 in myset
+
+// 快慢指针
+class Solution {
+public:
+    int getNext(int n){
+        int total;
+        while(n > 0){
+            int d = n % 10;
+            n /= 10;
+            total += d * d;
+        }
+        return total;
+    }
+
+    bool isHappy(int n) {
+        int slow = n, fast = getNext(n);
+        while(fast != 1 and slow == fast){
+            slow = getNext(slow);
+            fast = getNext(getNext(fast));
+        }
+        return fast == 1;
+    }
+};
