@@ -40,3 +40,38 @@ public:
         return heapk.top();
     }
 };
+
+// 基于快排的思想
+class Solution {
+public:
+    int quickSelect(vector<int>& nums, int l, int r, int index){
+        int q = randomPartition(nums, l, r);
+        if (q == index) {
+            return nums[q];
+        } 
+        else {
+            return q < index ? quickSelect(nums, q + 1, r, index) : quickSelect(nums, l, q - 1, index);
+        }
+    }
+
+    inline int randomPartition(vector<int>& nums, int l, int r){ // 随机pivot
+        int i = rand() % (r - l + 1) + l;
+        swap(nums[i], nums[r]);
+        return partition(nums, l, r);
+    }
+
+    inline int partition(vector<int>& nums, int l, int r){ // 快排
+        int x = nums[r], i = l - 1;
+        for(int j = l; j < r; j++){
+            if(nums[j] <= x){
+                swap(nums[++i], nums[j]);
+            }
+        }
+        swap(nums[i + 1], nums[r]);
+        return i + 1;
+    }
+
+    int findKthLargest(vector<int>& nums, int k) {
+        return quickSelect(nums, 0, nums.size() - 1, nums.size() - k);
+    }
+};
